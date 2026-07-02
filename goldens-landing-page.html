@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden's • Breakfast &amp; Lunch • Utica, NY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@300;400;500;600&amp;family=Caveat:wght@500;600&amp;display=swap');
+        
+        :root {
+            --gold: #C9A227;
+            --gold-light: #E8D48B;
+            --gold-dark: #8B6F1A;
+            --black: #0F0F0F;
+            --chalk-dark: #1A1A1A;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            background-color: #0F0F0F;
+            color: #E5E5E5;
+        }
+        
+        .chalk-font {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .heading-serif {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        .chalk-bg {
+            background-color: #1A1A1A;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 22px 22px;
+        }
+
+        .menu-item {
+            transition: all 0.15s ease;
+            padding: 6px 8px;
+            margin: -2px -8px;
+            border-radius: 6px;
+        }
+        
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            transform: translateX(2px);
+        }
+
+        .chalkboard {
+            background-color: #1A1A1A;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+            background-size: 18px 18px;
+            box-shadow: 
+                inset 0 2px 4px 0 rgba(0,0,0,0.6),
+                inset 0 0 0 1px rgba(255,255,255,0.04),
+                0 30px 70px -15px rgb(0 0 0 / 0.6),
+                0 0 0 12px #2C2522;
+            border: 14px solid #2C2522;
+            position: relative;
+        }
+        
+        .chalkboard::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 25% 30%, rgba(255,255,255,0.015) 0%, transparent 50%),
+                radial-gradient(circle at 75% 70%, rgba(255,255,255,0.01) 0%, transparent 50%);
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .chalk-text {
+            color: #F5E8C7;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .chalk-heading {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #E8D48B;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+            letter-spacing: 0.8px;
+        }
+
+        .menu-price {
+            font-family: 'Inter', system_ui, sans-serif;
+            font-weight: 700;
+            color: #E8D48B;
+        }
+
+        .chalkboard .menu-item {
+            border-color: rgba(232, 212, 139, 0.12);
+        }
+        
+        .chalkboard .menu-item:hover {
+            background-color: rgba(232, 212, 139, 0.05);
+        }
+        
+        .chalkboard h3,
+        .chalkboard .font-semibold {
+            color: #E8D48B;
+        }
+        
+        .chalkboard .text-gray-500,
+        .chalkboard .text-sm {
+            color: #C4B8A0;
+        }
+        
+        .chalkboard .text-xs {
+            color: #A89B7F;
+        }
+    </style>
+</head>
+<body class="bg-[#FFFBEB] text-gray-800">
+    <!-- NAV -->
+    <nav class="bg-[#0F0F0F] border-b border-[#2C2522] sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto">
+            <div class="px-6 py-4 flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="flex items-center">
+                        <span class="goldens-logo tracking-tighter text-[#C9A227]">Golden</span>
+                        <span class="relative -ml-1">
+                            <span class="goldens-logo tracking-tighter text-[#C9A227]">'s</span>
+                            <!-- Spoon accent -->
+                            <svg class="absolute -top-1 -right-3 w-5 h-5 text-[#C9A227]" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M14 2C14 2 16 4 16 8C16 12 14 14 14 14V22H10V14C10 14 8 12 8 8C8 4 10 2 10 2H14Z"/>
+                                <path d="M12 14V18" stroke="#C9A227" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="hidden sm:block">
+                        <span class="text-xs font-medium tracking-[3px] text-[#A89B7F]">EST. CENTRAL NY</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#menu" class="hover:text-[#C9A227] transition-colors text-[#E5E5E5]">Menu</a>
+                    <a href="#visit" class="hover:text-[#C9A227] transition-colors text-[#E5E5E5]">Visit Us</a>
+                </div>
+
+                <div class="flex items-center gap-x-3">
+                    <!-- CTA -->
+                    <a href="#menu" 
+                       class="hidden sm:inline-flex items-center px-5 py-2.5 text-sm font-semibold rounded-full bg-[#C9A227] text-black hover:bg-[#E8D48B] transition-all active:scale-[0.985]">
+                        View Full Menu
+                    </a>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn"
+                            class="md:hidden w-10 h-10 flex items-center justify-center text-[#A89B7F] hover:text-[#C9A227]">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="relative bg-[#0F0F0F] border-b border-[#2C2522]">
+        <div class="max-w-screen-xl mx-auto px-6 pt-16 pb-20 text-center">
+            <!-- Logo Mark -->
+            <div class="flex justify-center mb-6">
+                <div class="inline-flex items-center justify-center bg-[#1A1A1A] px-8 py-3 rounded-2xl border border-[#C9A227]/30">
+                    <div class="flex items-center gap-x-2">
+                        <!-- Fork + Spoon integrated logo -->
+                        <div class="flex items-center -space-x-1">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 3V21" stroke="#C9A227" stroke-width="2.25" stroke-linecap="round"/>
+                                <path d="M8 3V21" stroke="#C9A227" stroke-width="2.25" stroke-linecap="round"/>
+                                <path d="M11 3V21" stroke="#C9A227" stroke-width="2.25" stroke-linecap="round"/>
+                                <path d="M14 3V8" stroke="#C9A227" stroke-width="2.25" stroke-linecap="round"/>
+                                <path d="M14 12V21" stroke="#C9A227" stroke-width="2.25" stroke-linecap="round"/>
+                            </svg>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="-ml-1">
+                                <path d="M18 4C18 4 20 6 20 10C20 14 18 16 18 16V22H14V16C14 16 12 14 12 10C12 6 14 4 14 4H18Z" fill="#C9A227"/>
+                                <path d="M16 16V20" stroke="#C9A227" stroke-width="1.75" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="text-6xl font-black tracking-[-2.5px] text-[#C9A227]">Golden</span>
+                            <span class="text-6xl font-black tracking-[-2.5px] text-[#C9A227]">'s</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="text-5xl md:text-6xl font-bold tracking-tighter text-[#E5E5E5] mb-3">Breakfast &amp; Lunch,<br>made with heart.</h1>
+            <p class="max-w-md mx-auto text-xl text-[#A89B7F] mb-8">Chef-driven. Fresh ingredients. A neighborhood favorite in Utica, New York.</p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#menu" 
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-x-2 px-8 py-4 text-lg font-semibold rounded-2xl bg-[#C9A227] text-black hover:bg-[#E8D48B] transition-all active:scale-[0.985]">
+                    <span>Explore the Menu</span>
+                    <i class="fa-solid fa-arrow-right ml-1"></i>
+                </a>
+                <a href="#visit" 
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-x-2 px-8 py-4 text-lg font-semibold rounded-2xl border-2 border-[#C9A227]/40 hover:border-[#C9A227] text-[#E5E5E5] transition-all">
+                    <span>Plan Your Visit</span>
+                </a>
+            </div>
+
+            <div class="mt-8 flex items-center justify-center gap-x-6 text-sm">
+                <div class="flex items-center gap-x-1.5 text-[#A89B7F]">
+                    <i class="fa-solid fa-map-marker-alt text-[#C9A227]"></i>
+                    <span>Utica, New York</span>
+                </div>
+                <div class="h-1 w-1 rounded-full bg-[#3A3228]"></div>
+                <div class="text-[#A89B7F]">Open Daily for Breakfast &amp; Lunch</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MENU SECTION -->
+    <section id="menu" class="max-w-screen-xl mx-auto px-6 pt-8 pb-20">
+        <div class="text-center mb-12">
+            <span class="inline-block px-4 py-1.5 text-xs font-semibold tracking-widest bg-[#134E4A] text-white rounded-full mb-3">WHAT'S COOKING</span>
+            <h2 class="text-5xl font-bold tracking-tighter">The Menu</h2>
+            <p class="mt-3 text-gray-600 max-w-md mx-auto">Written daily on chalkboards. Here's a taste of what you'll find at Golden's.</p>
+        </div>
+
+        <!-- Menu Categories Grid -->
+        <div class="grid lg:grid-cols-2 gap-8">
+            
+            <!-- BREAKFAST -->
+            <div class="chalkboard rounded-3xl p-8 text-[#FEF3C7]">
+                <div class="flex items-center gap-x-3 mb-6">
+                    <div>
+                        <h3 class="chalk-heading text-4xl tracking-tight">~ Breakfast ~</h3>
+                        <p class="text-sm opacity-75">Served all day</p>
+                    </div>
+                </div>
+
+                <div class="space-y-5">
+                    <!-- Full English -->
+                    <div class="menu-item flex justify-between gap-4 pb-5 border-b border-gray-100">
+                        <div>
+                            <div class="font-semibold">Full English</div>
+                            <div class="text-sm text-gray-500">Two eggs, toast, bacon or sausage + potatoes. Served with coffee or canned drink.</div>
+                        </div>
+                        <div class="font-mono text-lg font-semibold text-right tabular-nums">$14</div>
+                    </div>
+
+                    <!-- French Toast -->
+                    <div class="menu-item flex justify-between gap-4 pb-5 border-b border-gray-100">
+                        <div>
+                            <div class="font-semibold">French Toast</div>
+                            <div class="text-sm text-gray-500">Classic with NY Maple Syrup</div>
+                        </div>
+                        <div class="font-mono text-lg font-semibold text-right tabular-nums">$10</div>
+                    </div>
+
+                    <div class="menu-item flex justify-between gap-4 pb-5 border-b border-gray-100">
+                        <div>
+                            <div class="font-semibold">Stuffed French Toast</div>
+                            <div class="text-sm text-gray-500">Cannoli filling, strawberries + NY Maple Syrup</div>
+                        </div>
+                        <div class="font-mono text-lg font-semibold text-right tabular-nums">$12</div>
+                    </div>
+
+                    <div class="menu-item flex justify-between gap-4 pb-5 border-b border-gray-100">
+                        <div>
+                            <div class="font-semibold">House-made Sausage English Muffin</div>
+                        </div>
+                        <div class="font-mono text-lg font-semibold text-right tabular-nums">$4</div>
+                    </div>
+
+                    <div class="menu-item flex justify-between gap-4 pb-5 border-b border-gray-100">
+                        <div>
+                            <div class="font-semibold">Egg + Cheese Sandwich</div>
+                            <div class="text-xs text-gray-500">Add bacon +$1 • Add sausage +$2</div>
+                        </div>
+                        <div class="font-mono text-lg font-semibold text-right tabular-nums">$5</div>
+                    </div>
+
+                    <div class="pt-2">
+                        <div class="font-semibold mb-3 text-sm tracking-wider text-gray-500">OMELETS <span class="font-normal">(all come with potatoes + toast)</span></div>
+                        <div class="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                            <div class="flex justify-between"><span>Cheddar + Chive</span><span class="font-mono">$12</span></div>
+                            <div class="flex justify-between"><span>Sausage + Cheese</span><span class="font-mono">$12</span></div>
+                            <div class="flex justify-between"><span>Spinach + Paneer</span><span class="font-mono">$12</span></div>
+                            <div class="flex justify-between"><span>Peppers + Onions</span><span class="font-mono">$12</span></div>
+                            <div class="flex justify-between col-span-2"><span>Bacon, Caramelized Onion + Cheese</span><span class="font-mono">$12</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Corn Bread Bubble Waffle -->
+                    <div class="pt-4 border-t border-gray-100">
+                        <div class="font-semibold mb-3 flex items-center gap-x-2">
+                            <span>Corn Bread Bubble Waffle</span> 
+                            <span class="text-[10px] px-2 py-px bg-emerald-100 text-emerald-700 rounded font-medium">GLUTEN FREE</span>
+                        </div>
+                        <div class="space-y-1.5 text-sm">
+                            <div class="flex justify-between"><span>Honey + Butter</span><span class="font-mono">$8</span></div>
+                            <div class="flex justify-between"><span>NY Maple Syrup + Butter</span><span class="font-mono">$8</span></div>
+                            <div class="flex justify-between"><span>Jalapeño + Cheddar</span><span class="font-mono">$10</span></div>
+                            <div class="flex justify-between"><span>Two Eggs, Sausage + NY Maple Syrup</span><span class="font-mono">$12</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LUNCH -->
+            <div class="chalkboard rounded-3xl p-8 text-[#FEF3C7]">
+                <div class="flex items-center gap-x-3 mb-6">
+                    <div>
+                        <h3 class="chalk-heading text-4xl tracking-tight">~ Lunch ~</h3>
+                        <p class="text-sm opacity-75">Signature sandwiches &amp; burgers</p>
+                    </div>
+                </div>
+
+                <div class="space-y-5">
+                    <!-- Sandwiches -->
+                    <div>
+                        <div class="uppercase text-xs tracking-[1.5px] font-semibold text-gray-500 mb-3">Signature Sandwiches</div>
+                        
+                        <div class="menu-item flex justify-between gap-4 pb-4 border-b border-gray-100">
+                            <div>
+                                <div class="font-semibold">Prime Rib Sandwich</div>
+                                <div class="text-sm text-gray-500">With 2 eggs, peppers + onions</div>
+                            </div>
+                            <div class="font-mono text-lg font-semibold text-right tabular-nums">$20</div>
+                        </div>
+                        
+                        <div class="menu-item flex justify-between gap-4 py-4 border-b border-gray-100">
+                            <div>
+                                <div class="font-semibold">Delmonico Steak Sandwich</div>
+                                <div class="text-sm text-gray-500">Caramelized onions on focaccia roll</div>
+                            </div>
+                            <div class="font-mono text-lg font-semibold text-right tabular-nums">$17</div>
+                        </div>
+                        
+                        <div class="menu-item flex justify-between gap-4 py-4 border-b border-gray-100">
+                            <div>
+                                <div class="font-semibold">Utica Caprese</div>
+                                <div class="text-sm text-gray-500">Fresh mozzarella, tomato + cherry pepper pesto</div>
+                            </div>
+                            <div class="font-mono text-lg font-semibold text-right tabular-nums">$9</div>
+                        </div>
+                        
+                        <div class="menu-item flex justify-between gap-4 py-4 border-b border-gray-100">
+                            <div>
+                                <div class="font-semibold">Old Timer</div>
+                                <div class="text-sm text-gray-500">Classic grilled cheese + Tuscan tomato soup</div>
+                            </div>
+                            <div class="font-mono text-lg font-semibold text-right tabular-nums">$12</div>
+                        </div>
+                    </div>
+
+                    <!-- Burgers -->
+                    <div>
+                        <div class="uppercase text-xs tracking-[1.5px] font-semibold text-gray-500 mb-3 pt-2">Signature Burgers</div>
+                        
+                        <div class="menu-item flex justify-between gap-4 pb-4 border-b border-gray-100">
+                            <div>
+                                <div class="font-semibold">The U.B. (Utica Burger)</div>
+                                <div class="text-sm text-gray-500">8oz burger, fresh mozzarella, tomato + cherry pepper pesto, garlic parm fries</div>
+                            </div>
+                            <div class="font-mono text-lg font-semibold text-right tabular-nums">$14</div>
+                        </div>
+                        
+                        <div class="menu-item flex justify-between gap-4 py-4 border-b border-gray-100">
+                            <div>
+                                <div class="font-semibold">Sweet Pepper Relish Burger</div>
+                                <div class="text-sm text-gray-500">8oz burger, pepper relish + pickles</div>
+                            </div>
+                            <div class="font-mono text-lg font-semibold text-right tabular-nums">$14</div>
+                        </div>
+                        
+                        <div class="menu-item flex justify-between gap-4 py-4 border-b border-gray-100">
+                            <div>
+                                <div class="font-semibold">Melinda's Burger</div>
+                                <div class="text-sm text-gray-500">8oz burger, American cheese, egg + Melinda's Spicy Truffle mayo</div>
+                            </div>
+                            <div class="font-mono text-lg font-semibold text-right tabular-nums">$17</div>
+                        </div>
+                        
+                        <div class="menu-item flex justify-between gap-4 py-4 border-b border-gray-100">
+                            <div>
+                                <div class="font-semibold">Georgealicious Burger</div>
+                                <div class="text-sm text-gray-500">8oz burger, caramelized onion + bacon in a grilled cheese</div>
+                            </div>
+                            <div class="font-mono text-lg font-semibold text-right tabular-nums">$16</div>
+                        </div>
+                        
+                        <div class="menu-item flex justify-between gap-4 py-4 border-b border-gray-100">
+                            <div>
+                                <div class="font-semibold">G-Mac Burger</div>
+                                <div class="text-sm text-gray-500">All-beef patty, special sauce, lettuce, cheese, pickles, onion on brioche</div>
+                            </div>
+                            <div class="font-mono text-lg font-semibold text-right tabular-nums">$14</div>
+                        </div>
+                        
+                        <div class="menu-item flex justify-between gap-4 py-4 border-b border-gray-100">
+                            <div>
+                                <div class="font-semibold">Golden Castle Burger</div>
+                                <div class="text-sm text-gray-500">8oz burger steeped in white onions + American cheese</div>
+                            </div>
+                            <div class="font-mono text-lg font-semibold text-right tabular-nums">$16</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-3 text-xs text-gray-500 italic">All lunch sandwiches &amp; burgers served with house fries unless noted.</div>
+                </div>
+            </div>
+
+            <!-- DRINKS + SIDES -->
+            <div class="chalkboard rounded-3xl p-8 text-[#FEF3C7] lg:col-span-2">
+                <div class="grid md:grid-cols-2 gap-x-10">
+                    
+                    <!-- Coffee & Drinks -->
+                    <div>
+                        <div class="flex items-center gap-x-3 mb-5">
+                            <div>
+                                <h3 class="chalk-heading text-3xl tracking-tight">~ Coffee &amp; Drinks ~</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between"><span>In-house coffee or tea</span><span class="font-mono font-semibold">$1.75</span></div>
+                            <div class="flex justify-between"><span>To-go coffee</span><span class="font-mono font-semibold">$3.00</span></div>
+                            <div class="flex justify-between"><span>Bottled tea</span><span class="font-mono font-semibold">$2.50</span></div>
+                            <div class="flex justify-between"><span>Bottled water</span><span class="font-mono font-semibold">$2.00</span></div>
+                            <div class="flex justify-between"><span>Canned drinks</span><span class="font-mono font-semibold">$2.00</span></div>
+                            <div class="flex justify-between"><span>Orange juice</span><span class="font-mono font-semibold">$2.00</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Sides -->
+                    <div class="mt-8 md:mt-0">
+                        <div class="flex items-center gap-x-3 mb-5">
+                            <div class="w-8 h-8 flex-shrink-0 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center">
+                                <i class="fa-solid fa-bowl-food"></i>
+                            </div>
+                            <h3 class="font-bold text-2xl tracking-tight">Sides</h3>
+                        </div>
+                        
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between"><span>House fries <span class="text-xs text-gray-400">(popcorn salt, lemon + turmeric)</span></span><span class="font-mono font-semibold">$4.00</span></div>
+                            <div class="flex justify-between"><span>Garlic Parm fries</span><span class="font-mono font-semibold">$4.00</span></div>
+                            <div class="flex justify-between"><span>House potatoes</span><span class="font-mono font-semibold">$3.00</span></div>
+                            <div class="flex justify-between"><span>Housemade corned beef hash</span><span class="font-mono font-semibold">$6.00</span></div>
+                            <div class="flex justify-between"><span>Soup of the day</span><span class="font-mono font-semibold">$6.00</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YOGURT BOWLS & CREPES -->
+            <div class="chalkboard rounded-3xl p-8 text-[#FEF3C7] lg:col-span-2">
+                <div class="grid md:grid-cols-2 gap-x-10">
+                    
+                    <!-- Yogurt Bowls -->
+                    <div>
+                        <div class="flex items-center gap-x-3 mb-5">
+                            <div>
+                                <h3 class="chalk-heading text-3xl tracking-tight">~ Yogurt Bowls ~</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between"><span>Fruit + local honey</span><span class="font-mono font-semibold">$5</span></div>
+                            <div class="flex justify-between"><span>Chopped nuts, chocolate ganache, sea salt</span><span class="font-mono font-semibold">$6</span></div>
+                            <div class="flex justify-between"><span>Lemon + local honey</span><span class="font-mono font-semibold">$4</span></div>
+                            <div class="flex justify-between"><span>Cannoli flavored with mini choc chips</span><span class="font-mono font-semibold">$6</span></div>
+                            <div class="flex justify-between"><span>Toasted asiago, sea salt, olive oil + fresh basil</span><span class="font-mono font-semibold">$6</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Crepes -->
+                    <div class="mt-8 md:mt-0">
+                        <div class="flex items-center gap-x-3 mb-5">
+                            <div>
+                                <h3 class="chalk-heading text-3xl tracking-tight">~ Crepes ~</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between"><span>Two eggs + NY Maple syrup</span><span class="font-mono font-semibold">$10</span></div>
+                            <div class="flex justify-between"><span>Lemon + sugar</span><span class="font-mono font-semibold">$8</span></div>
+                            <div class="flex justify-between"><span>NY Maple syrup + whipped cream</span><span class="font-mono font-semibold">$8</span></div>
+                            <div class="flex justify-between"><span>Nutella + banana</span><span class="font-mono font-semibold">$9</span></div>
+                            <div class="flex justify-between"><span>Strawberry, banana, cannoli filling, ganache + whipped cream</span><span class="font-mono font-semibold">$12</span></div>
+                            <div class="flex justify-between"><span>Two eggs, breakfast sausage + potatoes</span><span class="font-mono font-semibold">$12</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center">
+            <p class="text-sm text-[#D1D5DB] italic text-center">Daily specials written on the chalkboards. Vegan options available daily. Just ask!</p>
+        </div>
+    </section>
+
+    <!-- VISIT US -->
+    <section id="visit" class="bg-[#0F0F0F] border-t border-[#2C2522]">
+        <div class="max-w-screen-xl mx-auto px-6 py-16">
+            <div class="grid md:grid-cols-2 gap-x-16 items-center">
+                <div>
+                    <span class="inline-block px-4 py-1.5 text-xs font-semibold tracking-widest bg-[#C9A227] text-black rounded-full mb-4">COME SAY HELLO</span>
+                    <h2 class="text-5xl font-bold tracking-tighter text-[#E5E5E5] mb-6">We're saving you a seat.</h2>
+                    
+                    <div class="space-y-6 text-lg">
+                        <div>
+                            <div class="font-semibold text-[#E5E5E5]">Location</div>
+                            <div class="text-[#A89B7F]">Utica, New York<br>Central New York</div>
+                        </div>
+                        
+                        <div>
+                            <div class="font-semibold text-[#E5E5E5]">Hours</div>
+                            <div class="text-[#A89B7F]">Open daily for breakfast and lunch.<br>Hours posted on our door &amp; chalkboards.</div>
+                        </div>
+                        
+                        <div>
+                            <div class="font-semibold text-[#E5E5E5]">Parking</div>
+                            <div class="text-[#A89B7F]">Easy street parking + small lot available.</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Utica%2C+New+York" target="_blank" 
+                           class="inline-flex items-center gap-x-2 px-6 py-3.5 rounded-2xl bg-[#C9A227] text-black font-semibold hover:bg-[#E8D48B] transition-colors">
+                            <i class="fa-solid fa-directions"></i>
+                            <span>Get Directions</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-10 md:mt-0">
+                    <div class="bg-[#1A1A1A] rounded-3xl p-8 border border-[#C9A227]/30">
+                        <div class="text-center">
+                            <div class="mx-auto w-16 h-16 bg-[#0F0F0F] rounded-2xl flex items-center justify-center mb-5 border border-[#C9A227]/30">
+                                <i class="fa-solid fa-store text-3xl text-[#C9A227]"></i>
+                            </div>
+                            <div class="font-semibold text-xl mb-1 text-[#E5E5E5]">A true neighborhood spot</div>
+                            <p class="text-[#A89B7F] text-sm max-w-xs mx-auto">Stop in, grab a coffee, and stay awhile. We love feeding our community.</p>
+                            
+                            <div class="mt-6 pt-6 border-t border-[#C9A227]/20 text-xs text-[#A89B7F]">
+                                Follow us on social for daily specials, new menu drops, and behind-the-scenes from the kitchen.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <div class="bg-[#0F0F0F] border-t border-[#2C2522]">
+        <div class="max-w-screen-xl mx-auto px-6 py-14 text-center">
+            <h3 class="text-3xl font-bold tracking-tight text-[#E5E5E5] mb-3">Ready to taste Golden's?</h3>
+            <p class="text-[#A89B7F] mb-6 max-w-sm mx-auto">Whether it's your first time or you're a regular, we're glad you're here.</p>
+            <a href="#menu" class="inline-flex items-center justify-center px-10 py-4 text-lg font-semibold rounded-2xl bg-[#C9A227] text-black hover:bg-[#E8D48B] transition-all">
+                See the Full Menu
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#0A0A0A] text-[#A89B7F] text-sm border-t border-[#2C2522]">
+        <div class="max-w-screen-xl mx-auto px-6 py-10">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-y-4">
+                <div>
+                    <div class="flex items-center gap-x-2 text-[#E5E5E5]">
+                        <span class="font-semibold tracking-tight">Golden's</span>
+                        <span class="text-xs px-2 py-px bg-[#C9A227]/10 text-[#C9A227] rounded">Since forever</span>
+                    </div>
+                    <div class="mt-1">© 2026 Jeff Golden • Utica, New York</div>
+                </div>
+                
+                <div class="flex items-center gap-x-5 text-xs">
+                    <div>Handcrafted with care every single day.</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent', '#D97706');
+        }
+        
+        // Mobile menu
+        function setupMobileMenu() {
+            const btn = document.getElementById('mobile-menu-btn');
+            if (!btn) return;
+            
+            btn.addEventListener('click', () => {
+                const nav = document.createElement('div');
+                nav.className = `fixed inset-0 bg-black/60 z-[100] md:hidden`;
+                nav.innerHTML = `
+                    <div class="bg-white w-72 h-full p-6">
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="text-2xl font-black tracking-tighter text-[#134E4A]">Golden's</span>
+                            <button class="text-3xl text-gray-400 hover:text-gray-600">&times;</button>
+                        </div>
+                        
+                        <div class="flex flex-col gap-y-1 text-lg">
+                            <a href="#menu" class="py-3 px-4 hover:bg-gray-100 rounded-xl">Menu</a>
+                            <a href="#about" class="py-3 px-4 hover:bg-gray-100 rounded-xl">Our Story</a>
+                            <a href="#visit" class="py-3 px-4 hover:bg-gray-100 rounded-xl">Visit Us</a>
+                            
+                            <div class="pt-4 mt-4 border-t">
+                                <a href="#menu" class="block w-full text-center py-3.5 bg-[#134E4A] text-white font-semibold rounded-2xl">View Full Menu</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(nav);
+                
+                nav.addEventListener('click', (e) => {
+                    if (e.target === nav || e.target.tagName === 'BUTTON' || e.target.tagName === 'A') {
+                        nav.remove();
+                    }
+                });
+            });
+        }
+        
+        // Smooth scroll for anchor links
+        function setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        const offset = 80;
+                        const bodyRect = document.body.getBoundingClientRect().top;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition - bodyRect - offset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Keyboard accessibility + init
+        function init() {
+            initializeTailwind();
+            setupMobileMenu();
+            setupSmoothScroll();
+            
+            // Easter egg: click logo to scroll to top
+            const logo = document.querySelector('.goldens-logo');
+            if (logo) {
+                logo.style.cursor = 'pointer';
+                logo.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Subtle console message for owner
+            console.log('%c[Goldens] Landing page ready. Built with love for Chef Jeff.', 'color:#64748b;font-size:9px');
+        }
+        
+        window.onload = init;
+    </script>
+</body>
+</html>
